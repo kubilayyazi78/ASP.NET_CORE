@@ -17,6 +17,14 @@
                 <td>Unit Price</td>
                 <td>Unit In Stock</td>
             </tr>
+               @foreach(var product in Model.Products )
+               {
+            <tr>
+                <td>@product.ProductName</td>
+                <td>@product.UnitPrice</td>
+                <td>@product.UnitsInStock</td>
+            </tr>
+               }
         </table>
     </div>
 </body>
