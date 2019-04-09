@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Northwind.Business.Abstract;
 using Northwind.MvcWebUI.Models;
 using System;
@@ -16,13 +17,15 @@ namespace Northwind.MvcWebUI.ViewComponents
             _categoryService = categoryService;
         }
 
-        //public ViewComponentResult Invoke()
-        //{
-        //    var model = new CategoryListViewModel
-        //    {
-        //        Categories=_categoryService.GetAll()
-        //    };
-        //    return View(model);
-        //}
+        public ViewViewComponentResult Invoke()
+        {
+            var model = new CategoryListViewModel
+            {
+                Categories=_categoryService.GetAll()
+            };
+            return View(model);
+        }
+
+
     }
 }
