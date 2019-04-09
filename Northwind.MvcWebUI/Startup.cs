@@ -10,6 +10,7 @@ using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
 using Northwind.DataAccess.Abstract;
 using Northwind.DataAccess.Concrete.EntityFramework;
+using Northwind.MvcWebUI.Middlewares;
 
 namespace Northwind.MvcWebUI
 {
@@ -31,6 +32,9 @@ namespace Northwind.MvcWebUI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseFileServer();
+            app.UseNodeModules(env.ContentRootPath);
 
             //app.Run(async (context) =>
             //{
