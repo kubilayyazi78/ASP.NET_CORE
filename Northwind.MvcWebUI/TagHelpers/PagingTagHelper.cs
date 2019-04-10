@@ -28,9 +28,10 @@ namespace Northwind.MvcWebUI.TagHelpers
             for (int i = 1; i <= PageCount; i++)
             {
                 stringBuilder.AppendFormat("<li class='{0}'>", i == CurrentPage ? "active" : "");
-                stringBuilder.AppendFormat("<a href='product/index?page={0}&category={1}'>{2}</a>", i, CurrentCategory, i);
+                stringBuilder.AppendFormat("<a href='/product/index?page={0}&category={1}'>{2}</a>", i, CurrentCategory, i);
                 stringBuilder.Append("</li>");
             }
+            stringBuilder.Append("</ul>");
             output.Content.SetHtmlContent(stringBuilder.ToString());
             base.Process(context, output);
         }
