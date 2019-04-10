@@ -1,4 +1,5 @@
 ﻿@model Northwind.MvcWebUI.Models.ProductListViewModel
+
 @{
     Layout = "~/Views/_Layout.cshtml";
 }
@@ -21,3 +22,9 @@
         </table>
     </div>
 
+
+<product-list-pager 
+current-category="@Model.CurrentCategory"
+current-page="@Model.CurrentPage"
+page-count="@Model.PageCount"
+ page-size="@Model.PageSize"></product-list-pager>
