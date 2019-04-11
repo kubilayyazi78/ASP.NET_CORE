@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Northwind.Business.Abstract;
 using Northwind.MvcWebUI.Models;
 using System;
@@ -30,5 +31,13 @@ namespace Northwind.MvcWebUI.Controllers
             };
             return View(model);
         }
+        //public string Session()
+        //{
+        //    HttpContext.Session.SetString("city", "Ankara");
+        //    HttpContext.Session.SetInt32("age", 32);
+
+        //    HttpContext.Session.GetString("city");
+        //    HttpContext.Session.GetInt32("age");
+        //}
     }
 }
