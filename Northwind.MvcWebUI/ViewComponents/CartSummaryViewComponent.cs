@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Northwind.MvcWebUI.Models;
 using Northwind.MvcWebUI.Services;
 using System;
@@ -15,7 +16,7 @@ namespace Northwind.MvcWebUI.ViewComponents
         {
             _cartSessionService = cartSessionService;
         }
-        public ViewComponentResult Invoke()
+        public ViewViewComponentResult Invoke()
         {
             var model = new CartSummaryViewModel
             {
