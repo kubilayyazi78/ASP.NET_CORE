@@ -28,7 +28,7 @@ namespace Northwind.MvcWebUI.Services
 
         public void SetCart(Cart cart)
         {
-            _httpContextAccessor.HttpContext.Session.SetObject("cart", new Cart());
+            _httpContextAccessor.HttpContext.Session.SetObject("cart", cart);
         }
     }
 }
