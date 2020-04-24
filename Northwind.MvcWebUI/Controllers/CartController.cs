@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Northwind.Business.Abstract;
+using Northwind.Entites.Concrete;
 using Northwind.MvcWebUI.Models;
 using Northwind.MvcWebUI.Services;
 using System;
@@ -54,6 +55,26 @@ namespace Northwind.MvcWebUI.Controllers
             TempData.Add("message", String.Format("Your product was successfully removed the cart!"));
 
             return RedirectToAction("List");
+        }
+
+        public ActionResult Complete()
+        {
+            var shippingDetailsViewModel = new ShippingDetailsViewModel
+            {
+                ShippingDetails = new ShippingDetails()
+            };
+            return View(shippingDetailsViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Complete(ShippingDetails shippingDetails)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            TempData.Add("message",String.Format( "Thank you {0} your order is in process", shippingDetails.FirstName));
+            return View();
         }
     }
 }
