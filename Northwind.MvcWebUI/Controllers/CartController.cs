@@ -44,5 +44,16 @@ namespace Northwind.MvcWebUI.Controllers
             };
             return View(cartSummaryViewModel);
         }
+
+        public ActionResult Remove (int productId)
+        {
+            var cart = _cartSessionService.GetCart();
+            _cartService.RemoveFromCart(cart, productId);
+            _cartSessionService.SetCart(cart);
+
+            TempData.Add("message", String.Format("Your product was successfully removed the cart!"));
+
+            return RedirectToAction("List");
+        }
     }
 }
