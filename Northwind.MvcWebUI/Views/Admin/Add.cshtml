@@ -15,7 +15,7 @@
 
     <div class="form-group">
         <label asp-for="Product.CategoryId"></label>
-        <input asp-for="Product.CategoryId" class="form-control" placeholder="Category Id" />
+        <select asp-for="Product.CategoryId" class="form-control"  asp-items="@(new SelectList(Model.Categories,"CategoryId","CategoryName"))"> </select>
         <span asp-validation-for="Product.CategoryId"></span>
     </div>
 

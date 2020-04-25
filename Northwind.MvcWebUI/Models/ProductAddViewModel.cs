@@ -8,6 +8,7 @@ namespace Northwind.MvcWebUI.Models
 {
     public class ProductAddViewModel
     {
+        public List<Category> Categories { get; internal set; }
         public Product Product  { get; set; }
     }
 }
