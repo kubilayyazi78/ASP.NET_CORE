@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Northwind.Business.Abstract;
+using Northwind.Entites.Concrete;
 using Northwind.MvcWebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -24,5 +25,24 @@ namespace Northwind.MvcWebUI.Controllers
             };
             return View(productListViewModel);
         }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _productService.Add(product);
+                TempData.Add("message", "Product was successfully added");
+            }
+
+            return View();
+        }
+
+
     }
 }
