@@ -72,5 +72,12 @@ namespace Northwind.MvcWebUI.Controllers
             return RedirectToAction("Update");
         }
 
+        public ActionResult Delete(int productId)
+        {
+            _productService.Delete(productId);
+            TempData.Add("message", "Product was successfully deleted");
+            return RedirectToAction("Index");
+        }
+
     }
 }
