@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
 using Northwind.DataAccess.Abstract;
 using Northwind.DataAccess.Concrete.EntityFramework;
+using Northwind.MvcWebUI.Entities;
 using Northwind.MvcWebUI.Middlewares;
 using Northwind.MvcWebUI.Services;
 
@@ -27,6 +30,8 @@ namespace Northwind.MvcWebUI
             services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddSingleton<ICartSessionService,CartSessionService>();
             services.AddSingleton<ICartService, CartService>();
+            services.AddDbContext<CustomIdentityDbContext>(options => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddIdentity<CustomIdentityUser, CustomIdentityRole>().AddEntityFrameworkStores<CustomIdentityDbContext>().AddDefaultTokenProviders();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSession();
             services.AddDistributedMemoryCache();
@@ -43,6 +48,7 @@ namespace Northwind.MvcWebUI
 
             app.UseFileServer();
             app.UseNodeModules(env.ContentRootPath);
+            app.UseIdentity();
             app.UseSession();
 
             //app.Run(async (context) =>
