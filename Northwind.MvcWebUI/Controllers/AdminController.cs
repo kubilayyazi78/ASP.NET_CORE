@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Northwind.Business.Abstract;
 using Northwind.Entites.Concrete;
 using Northwind.MvcWebUI.Models;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.MvcWebUI.Controllers
 {
+    [Authorize]
     public class AdminController:Controller
     {
         IProductService _productService;
