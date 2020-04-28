@@ -83,8 +83,8 @@ namespace Northwind.MvcWebUI.Controllers
             return View(loginViewModel);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+      //  [HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             _signInManager.SignOutAsync().Wait();
